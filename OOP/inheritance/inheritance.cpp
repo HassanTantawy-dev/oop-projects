@@ -8,12 +8,10 @@ private:
     int year;
 
 public:
-    vehicle(string b, int y)
-    {
-        brand = b;
-        year = y;
-    }
-    vehicle()
+
+vehicle(string b, int y): brand(b), year(y){}
+   
+vehicle()
     {
         brand = "unknown";
         year = 0;
@@ -36,14 +34,16 @@ public:
         speed = s;
         speedChanger = sc;
     }
-    void accelerate()
-    {
-        cout << "accelerating" << endl;
-    }
-    void deceleration()
-    {
-        cout << "decelerating" << endl;
-    };
+void accelerate()
+{
+    speed += speedChanger;
+    cout << "accelerating, speed is now: " << speed << endl;
+}
+void deceleration()
+{
+    speed -= speedChanger;
+    cout << "decelerating, speed is now: " << speed << endl;
+};
     void getinfo()
     {
         vehicle::getinfo();
@@ -56,7 +56,9 @@ int main()
 {
     car c1("BMW", 2020, 200, 10);
 
-    c1.getinfo();
+     c1.getinfo();
+     c1.accelerate();
+     c1.deceleration();
 
     return 0;
 };
